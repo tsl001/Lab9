@@ -63,6 +63,9 @@
     });
   </script>
 
+
+
+
   <script>
     class OutputError extends Error{
       constructor(message){
@@ -141,8 +144,9 @@
               output.innerHTML = "error";
             });
             output.innerHTML = "error";
-            
-            try{
+          }
+          boom("hi");
+          try{
               
               if(output.innerHTML == "error"){
                         throw new OutputError("Output value error");
@@ -155,21 +159,16 @@
                 console.error(err.stack);
               }
             }
-            finally{
-              console.log(boom)
-              window.onerror = function () {
-                console.log("Sadly an error happened friend");
-                TrackJS.track('Testing TrackJS!');
-              };
-            }
-          }
+
+            
       });
     });
 
-    
-    
-    //TrackJS.track('Testing TrackJS!');
-                             
+    window.onerror = function () {
+        console.log("Sadly an error happened friend");
+        TrackJS.track('Testing TrackJS!');
+    };                       
   </script>
+
 </body>
 </html>
